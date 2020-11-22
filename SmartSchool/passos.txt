@@ -1,0 +1,13 @@
+dotnet -h comandos
+-n = nome
+dotnet new webapi -n ome-projeto
+dotnet new webapi -n SmartShool.WebAPI
+
+rodar
+dotnet run
+
+
+dotnet new sln -n SmartSchool
+
+dotnet sln SmartSchool.sln add SmartShool.csproj
+dotnet sln SmartSchool.sln add SmartSchool/SmartSchool.csproj
