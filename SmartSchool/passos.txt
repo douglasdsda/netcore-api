@@ -16,6 +16,9 @@ dotnet sln SmartSchool.sln add SmartSchool/SmartSchool.csproj
 control p = restore para atualizar os pacotes
 
 
+
+dotnet run watch
+
 dotnet tool install --global dotnet-ef --version 3.1.0
 
 criar migrations
