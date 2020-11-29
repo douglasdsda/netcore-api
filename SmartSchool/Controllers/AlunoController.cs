@@ -11,15 +11,24 @@ using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace SmartSchool.Controllers
+namespace SmartSchool.V1.Controllers
 {
-  [Route("api/[controller]")]
+  /// <summary>
+  /// 
+  /// </summary>
+  [Route("api/v{version:apiVersion}/[controller]")]
+  [ApiVersion("1.0")]
   [ApiController]
   public class AlunoController : ControllerBase
   {
     public readonly IRepository _repo;
     private readonly IMapper _mapper;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="repo"></param>
+    /// <param name="mapper"></param>
     public AlunoController(IRepository repo, IMapper mapper)
     {
       _mapper = mapper;
@@ -27,7 +36,10 @@ namespace SmartSchool.Controllers
     }
 
 
-    // GET: api/<AlunoController>
+   /// <summary>
+   /// Método responsavel para retornar todos alunos
+   /// </summary>
+   /// <returns></returns>
     [HttpGet]
     public IActionResult Get()
     {
@@ -36,7 +48,10 @@ namespace SmartSchool.Controllers
       return Ok(_mapper.Map<IEnumerable<AlunoDto>>(alunos));
 
     }
-
+    /// <summary>
+    /// Método responsavel para retornar apenas um aluno por meio do codigo ID
+    /// </summary>
+    /// <returns></returns>
     // GET api/<AlunoController>/5
     [HttpGet("{id}")]
     public IActionResult GetById(int id)
