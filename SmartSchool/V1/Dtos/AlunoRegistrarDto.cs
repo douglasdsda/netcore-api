@@ -1,6 +1,6 @@
 using System;
 
-namespace SmartSchool.Dtos
+namespace SmartSchool.V1.Dtos
 {
     public class AlunoRegistrarDto
     {

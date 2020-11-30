@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartSchool.Data;
-using SmartSchool.Dtos;
+using SmartSchool.V1.Dtos;
 using SmartSchool.Models;
 using System;
 using System.Collections.Generic;
@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace SmartSchool.Controllers
+namespace SmartSchool.V1.Controllers
 {
   [Route("api/v{version:apiVersion}/[controller]")]
-  [ApiVersion("2.0")]
+  [ApiVersion("1.0")]
   [ApiController]
   public class ProfessorController : ControllerBase
   {

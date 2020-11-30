@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartSchool.Data;
-using SmartSchool.Dtos;
+using SmartSchool.V2.Dtos;
 using SmartSchool.Models;
 using System;
 using System.Collections.Generic;
@@ -11,14 +11,14 @@ using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace SmartSchool.V1.Controllers
+namespace SmartSchool.V2.Controllers
 {
   /// <summary>
-  /// 
+  /// Versão 2 do contradolr de alunos
   /// </summary>
-  [Route("api/v{version:apiVersion}/[controller]")]
-  [ApiVersion("1.0")]
   [ApiController]
+  [ApiVersion("2.0")]
+  [Route("api/v{version:apiVersion}/[controller]")]
   public class AlunoController : ControllerBase
   {
     public readonly IRepository _repo;
@@ -80,20 +80,6 @@ namespace SmartSchool.V1.Controllers
     // PUT api/<AlunoController>/5
     [HttpPut("{id}")]
     public IActionResult Put(int id, AlunoRegistrarDto model)
-    {
-      var aluno = _repo.GetAlunoById(id);
-      if (aluno == null) return BadRequest("Aluno nao encontrado");
-
-      _mapper.Map(model, aluno);
-      _repo.Update(aluno);
-      if (_repo.SaveChanges()) return Ok(_mapper.Map<AlunoDto>(aluno));
-
-      return BadRequest("Aluno não atualizado.");
-    }
-
-    // Patch api/<AlunoController>/5
-    [HttpPatch("{id}")]
-    public IActionResult Patch(int id, AlunoRegistrarDto model)
     {
       var aluno = _repo.GetAlunoById(id);
       if (aluno == null) return BadRequest("Aluno nao encontrado");

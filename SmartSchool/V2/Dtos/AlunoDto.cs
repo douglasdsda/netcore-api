@@ -1,6 +1,6 @@
 using System;
 
-namespace SmartSchool.Dtos
+namespace SmartSchool.V2.Dtos
 {
     public class AlunoDto
     {

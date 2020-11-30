@@ -4,25 +4,49 @@
         <name>SmartSchool</name>
     </assembly>
     <members>
-        <member name="T:SmartSchool.Controllers.AlunoController">
+        <member name="T:SmartSchool.V1.Controllers.AlunoController">
             <summary>
-            
+            Versão 1 do controlador de alunos
             </summary>
         </member>
-        <member name="M:SmartSchool.Controllers.AlunoController.#ctor(SmartSchool.Data.IRepository,AutoMapper.IMapper)">
+        <member name="M:SmartSchool.V1.Controllers.AlunoController.#ctor(SmartSchool.Data.IRepository,AutoMapper.IMapper)">
             <summary>
             
             </summary>
             <param name="repo"></param>
             <param name="mapper"></param>
         </member>
-        <member name="M:SmartSchool.Controllers.AlunoController.Get">
+        <member name="M:SmartSchool.V1.Controllers.AlunoController.Get">
             <summary>
             Método responsavel para retornar todos alunos
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SmartSchool.Controllers.AlunoController.GetById(System.Int32)">
+        <member name="M:SmartSchool.V1.Controllers.AlunoController.GetById(System.Int32)">
+            <summary>
+            Método responsavel para retornar apenas um aluno por meio do codigo ID
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SmartSchool.V2.Controllers.AlunoController">
+            <summary>
+            Versão 2 do contradolr de alunos
+            </summary>
+        </member>
+        <member name="M:SmartSchool.V2.Controllers.AlunoController.#ctor(SmartSchool.Data.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SmartSchool.V2.Controllers.AlunoController.Get">
+            <summary>
+            Método responsavel para retornar todos alunos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmartSchool.V2.Controllers.AlunoController.GetById(System.Int32)">
             <summary>
             Método responsavel para retornar apenas um aluno por meio do codigo ID
             </summary>
