@@ -1,0 +1,9 @@
+npm install bootstrap
+
+npm install ngx-bootstrap --save
+
+npm install ngx-spinner
+
+npm i ngx-toastr
+
+angular.json -> "node_modules/ngx-toastr/toastr.css"
