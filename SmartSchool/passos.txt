@@ -29,3 +29,62 @@ dotnet ef database update = cria o banco
 
 visual studio 2019 - view -> other windows -> package manager console
 get-help entityframeworkcore
+
+
+//docker 
+
+// instalar netcore core 3.1
+docker container run --name smartschool -it mcr.microsoft.com/dotnet/core/sdk:3.1
+
+
+// criar projeto console
+dotnet new console
+
+//build projeto
+criar projeto build
+
+// docker file
+https://docs.docker.com/engine/examples/dotnetcore/
+
+// rodar
+dotnet run
+
+// mostrar conteudo do arquivo
+cat Program.cs
+
+// executar docker modo interativo
+docker container exec -it smartschool bash
+
+// criar publicacao
+dotnet publish --configuration Release --output dist
+
+criando imagem projeto
+//criar imagem
+docker build -t smartschool .
+
+// criar container e executa
+docker run -d -p 5000:80 --name smartschool smartschool
+
+// docker container
+docker container run -d --name mysql -p 3306:3306 -v smartschooldb:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e bind-address:0.0.0.0 -e MYSQL_USER=root -e MYSQL_PASSWORD=root -e MYSQL_ROOT_HOST=% mysql:5.7
+
+// entity framwork
+Pomelo.EntityFrameworkCore.MySql
+
+connection string mysql
+
+// criar database mysql
+dotnet ef migrations add initMySql
+
+// criar database
+dotnet ef database update
+
+// mysql bash
+docker container exec -it mysql bash
+
+// entrar mysql
+mysql -u root -p
+
+// show databases
+
+password_last_changed
