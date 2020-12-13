@@ -16,6 +16,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfessoresAlunosComponent } from './components/alunos/professores-alunos/professores-alunos.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TituloComponent,
     NavComponent,
     DashbordComponent,
-    PerfilComponent
+    PerfilComponent,
+    ProfessoresAlunosComponent
   ],
   imports: [
     BrowserModule,
