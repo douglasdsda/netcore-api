@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -17,6 +17,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfessoresAlunosComponent } from './components/alunos/professores-alunos/professores-alunos.component';
+import { ProfessorDetalheComponent } from './components/professores/professor-detalhe/professor-detalhe.component';
+import { AlunosProfessoresComponent } from './components/professores/alunos-professores/alunos-professores.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ProfessoresAlunosComponent } from './components/alunos/professores-alun
     NavComponent,
     DashbordComponent,
     PerfilComponent,
-    ProfessoresAlunosComponent
+    ProfessoresAlunosComponent,
+    ProfessorDetalheComponent,
+    AlunosProfessoresComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +39,7 @@ import { ProfessoresAlunosComponent } from './components/alunos/professores-alun
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    PaginationModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     HttpClientModule,
