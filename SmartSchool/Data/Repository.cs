@@ -77,7 +77,7 @@ namespace SmartSchool.Data
       return await PageList<Aluno>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
     }
 
-    public Aluno[] GetAllAlunosByDisciplinaId(int disciplinaId, bool includeProfessor = false)
+    public async Task<Aluno[]> GetAllAlunosByDisciplinaIdAsync(int disciplinaId, bool includeProfessor = false)
     {
       IQueryable<Aluno> query = _context.Alunos;
 
@@ -92,7 +92,7 @@ namespace SmartSchool.Data
                   .OrderBy(a => a.Id)
                   .Where(aluno => aluno.AlunosDisciplinas.Any(ad => ad.DisciplinaId == disciplinaId));
 
-      return query.ToArray();
+      return await query.ToArrayAsync();
     }
 
 
@@ -167,6 +167,26 @@ namespace SmartSchool.Data
                   .Where(professor => professor.Id == professorId);
 
       return query.FirstOrDefault();
+    }
+    public Professor[] GetAProfessorByAlunoId(int alunoId, bool includeAlunos = false)
+    {
+      IQueryable<Professor> query = _context.Professores;
+
+
+      if (includeAlunos)
+      {
+        query = query.Include(p => p.Disciplinas)
+                     .ThenInclude(ad => ad.AlunosDisciplinas)
+                     .ThenInclude(a => a.Aluno);
+
+      }
+      query = query.AsNoTracking()
+                  .OrderBy(p => p.Id)
+                  .Where(aluno => aluno.Disciplinas.Any(
+                    d => d.AlunosDisciplinas.Any(ad => ad.AlunoId == alunoId)
+                  ));
+
+      return query.ToArray();
     }
   }
 }

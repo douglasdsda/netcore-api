@@ -63,8 +63,25 @@ namespace SmartSchool.V1.Controllers
       var aluno = _repo.GetAlunoById(id, false);
       if (aluno != null)
       {
-        var alunoDto = _mapper.Map<AlunoDto>(aluno);
+        var alunoDto = _mapper.Map<AlunoRegistrarDto>(aluno);
         return Ok(alunoDto);
+      }
+      return BadRequest("O Aluno não foi encontrado.");
+    }
+    
+    /// <summary>
+    /// Método responsavel aluno by disciplina
+    /// </summary>
+    /// <returns></returns>
+    // GET api/<Aluno>/5
+    [HttpGet("ByDisciplina/{id}")]
+    public async Task<IActionResult> GetByDisciplina(int id)
+    {
+      var result = await _repo.GetAllAlunosByDisciplinaIdAsync(id, false);
+      if (result != null)
+      {
+ 
+        return Ok(result);
       }
       return BadRequest("O Aluno não foi encontrado.");
     }
@@ -97,14 +114,30 @@ namespace SmartSchool.V1.Controllers
 
     // Patch api/<AlunoController>/5
     [HttpPatch("{id}")]
-    public IActionResult Patch(int id, AlunoRegistrarDto model)
+    public IActionResult Patch(int id, AlunoPatchDto model)
     {
       var aluno = _repo.GetAlunoById(id);
       if (aluno == null) return BadRequest("Aluno nao encontrado");
 
       _mapper.Map(model, aluno);
       _repo.Update(aluno);
-      if (_repo.SaveChanges()) return Ok(_mapper.Map<AlunoDto>(aluno));
+      if (_repo.SaveChanges()) return Ok(_mapper.Map<AlunoPatchDto>(aluno));
+
+      return BadRequest("Aluno não atualizado.");
+    }
+   
+    [HttpPatch("{id}/trocarEstado")]
+    public IActionResult trocarEstado(int id, TrocarEstadoDto estado)
+    {
+      var aluno = _repo.GetAlunoById(id);
+      if (aluno == null) return BadRequest("Aluno nao encontrado");
+
+      aluno.Ativo = estado.Estado;
+      _repo.Update(aluno);
+      if (_repo.SaveChanges()){
+        var msn = aluno.Ativo ? "ativado":"desativado";
+        return Ok(new { message = $"Aluno {msn} com sucesso!"});
+      } 
 
       return BadRequest("Aluno não atualizado.");
     }

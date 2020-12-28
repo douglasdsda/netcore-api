@@ -14,7 +14,7 @@ namespace SmartSchool.Helpers
            camelCaseFormat.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
            response.Headers.Add("Pagination", JsonConvert.SerializeObject(paginationHeader, camelCaseFormat));
-           response.Headers.Add("Access-Control-Expose-Header", "Pagination");
+           response.Headers.Add("Access-Control-Expose-Headers", "Pagination");
 
         }
     }

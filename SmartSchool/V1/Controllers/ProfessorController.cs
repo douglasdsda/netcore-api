@@ -38,7 +38,7 @@ namespace SmartSchool.V1.Controllers
     [HttpGet("{id}")]
     public IActionResult GetById(int id)
     {
-      var professor = _repo.GetAProfessorById(id, false);
+      var professor = _repo.GetAProfessorById(id, true);
       if (professor != null){
         var professorDto = _mapper.Map<ProfessorDto>(professor);
         return Ok(professorDto);
@@ -69,6 +69,16 @@ namespace SmartSchool.V1.Controllers
       if (_repo.SaveChanges()) return Ok(_mapper.Map<ProfessorDto>(professor));
 
       return BadRequest("Professor não cadastrado.");
+    }
+    
+    // GET api/<Professor>/5
+    [HttpGet("byaluno/{alunoId}")]
+    public IActionResult ByAluno(int alunoId)
+    {
+     var professores = _repo.GetAProfessorByAlunoId(alunoId, true);
+      if (professores == null) return BadRequest("Professores nao encontrado");
+ 
+      return Ok( _mapper.Map<IEnumerable<ProfessorDto>>(professores));
     }
 
     // Patch api/<ProfessorController>/5

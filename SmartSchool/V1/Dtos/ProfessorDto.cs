@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace SmartSchool.V1.Dtos
 {
@@ -10,6 +11,10 @@ namespace SmartSchool.V1.Dtos
         public string Telefone { get; set; }
          public DateTime DataIni { get; set; }
         public bool Ativo { get; set; }
+
+        public IEnumerable<DisciplinaDto> Disciplinas { get; set; }
+        
+        
  
     }
 }
